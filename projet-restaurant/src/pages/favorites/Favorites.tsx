@@ -17,6 +17,7 @@ export const Favorites = () => {
   }, [favoritesIds]);
 
   return (
+    // Use a React fragment if you have a main component container with no style
     <div>
       <div className="title-fav">
         <h1>My Fav</h1>

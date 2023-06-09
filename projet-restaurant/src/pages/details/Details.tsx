@@ -40,6 +40,7 @@ export const About = () => {
 
   const isFavorite = favoritesIds.includes(restaurant.id);
 
+  // Nice to have defined a method centralizing the logic
   const handleFavoriteClick = () => {
     if (isFavorite) {
       setSelectedFavId(restaurant.id);

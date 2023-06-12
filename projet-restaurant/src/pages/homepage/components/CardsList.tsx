@@ -3,10 +3,10 @@ import "./CardsList.css";
 import { Link } from "react-router-dom";
 import { Card } from "./Card";
 import { Restaurant } from "../../../models/Restaurant";
-type CardsListProps = {
 
+type CardsListProps = {
+  //get restaurant list from data
   RestaurantList: Restaurant[];
-  
 };
 
 export const CardsList = ({ RestaurantList }: CardsListProps) => {

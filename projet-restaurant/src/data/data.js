@@ -86,6 +86,20 @@ export const restaurants = [
   },
   {
     id: 6,
+    name: "Lüks Kebab",
+    address: "6 Rue du Père Guérin, 75013 Paris",
+    description_short: "Not a kebab, it’s Lüks Kebab",
+    description_long:
+      "Lüks, c’est avant tout une histoire d’originalité et de créativité. La broche est réalisée quotidiennement avec de la viande fraîche et sélectionnée par un boucher de renom. Nos légumes sont frais et livrés chaque jour, nos sauces faites-maison et le pain est artisanal.Plusieurs fois dans l’année, Lüks vous fait voyager avec des créations uniques de notre chef avec des produits de saison !",
+    img: "https://luks-kebab.fr/wp-content/uploads/2022/03/LuksKebab_Signatures-scaled.jpg",
+    menu: {
+      entrees: ["entree 1", "entree 2"],
+      dishes: ["plat 1", "plat 2", "plat 3"],
+      deserts: ["desert 1", "desert 2"],
+    },
+  },
+  {
+    id: 7,
     name: "Higuma",
     address: "32bis Rue Sainte-Anne, 75001 Paris",
     description_short: "Cuisine japonaise, cadre à l'ambiance détendue",
@@ -100,17 +114,8 @@ export const restaurants = [
   },
 ];
 
-export const getArticles = () => {
-  return restaurants.map(
-    (restaurant) =>
-      new Restaurant(
-        restaurant.id,
-        restaurant.name,
-        restaurant.address,
-        restaurant.description_short,
-        restaurant.description_long,
-        restaurant.img,
-        restaurant.menu
-      )
-  );
-};
+export const getRestaurant = () => {
+  return restaurants.map((restaurant) => {
+    new Restaurant(restaurant);
+  });
+}

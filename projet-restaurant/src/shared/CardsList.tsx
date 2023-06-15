@@ -1,8 +1,6 @@
-import React from "react";
 import "./CardsList.css";
-import { Link } from "react-router-dom";
 import { Card } from "./Card";
-import { Restaurant } from "../../../models/Restaurant";
+import { Restaurant } from "../models/Restaurant";
 
 type CardsListProps = {
   //get restaurant list from data
@@ -13,9 +11,7 @@ export const CardsList = ({ RestaurantList }: CardsListProps) => {
   return (
     <div className="cards-list">
       {RestaurantList.map((item) => (
-        <Link to={"/details"}>
-          <Card restaurant={item} key={item.id} />
-        </Link>
+        <Card restaurant={item} key={item.id} />
       ))}
     </div>
   );

@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
-import { restaurants } from "../../data/data";
+import { useContext } from "react";
 import { RestaurantContext } from "../../context/RestaurantContext";
-import { Link } from "react-router-dom";
-import { CardsList } from "./components/CardsList";
+import { CardsList } from "../../shared/CardsList";
 
 export const Home = () => {
-  const restaurantData = useContext(RestaurantContext);
+  const { restaurants } = useContext(RestaurantContext);
   return (
     <div>
-      <CardsList RestaurantList={restaurantData} />
+      <CardsList RestaurantList={restaurants} />
     </div>
   );
 };

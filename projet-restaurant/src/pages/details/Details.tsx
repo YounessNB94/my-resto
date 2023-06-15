@@ -1,19 +1,21 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./Details.css";
-import { restaurants } from "../../data/data";
 import { Restaurant } from "../../models/Restaurant";
 import { RestaurantContext } from "../../context/RestaurantContext";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { FavoritesContext } from "../../context/FavoritesContext";
 
 export const About = () => {
   const { restoId } = useParams();
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
-  const restaurantData = useContext(RestaurantContext);
+  const { restaurants } = useContext(RestaurantContext);
+  const { addFavorite, setShowModal, favoritesIds, setSelectedFavId } =
+    useContext(FavoritesContext);
 
   if (restoId == null) return <p>No restaurant found...</p>;
 
   const getRestaurant = () => {
-    const foundRestaurant: Restaurant | undefined = restaurantData.find(
+    const foundRestaurant: Restaurant | undefined = restaurants.find(
       (restaurant: Restaurant) => {
         if (restoId) {
           if (restaurant.id === parseInt(restoId, 10)) {
@@ -36,6 +38,17 @@ export const About = () => {
     return <p>Loading...</p>;
   }
 
+  const isFavorite = favoritesIds.includes(restaurant.id);
+
+  const handleFavoriteClick = () => {
+    if (isFavorite) {
+      setSelectedFavId(restaurant.id);
+      setShowModal(true);
+    } else {
+      addFavorite(restaurant.id);
+    }
+  };
+
   return (
     <div className="details-page">
       <div className="img-description">
@@ -43,7 +56,10 @@ export const About = () => {
         <div className="description">
           <h1>{restaurant?.name}</h1>
 
-          <button>Add to favorites</button>
+          <button onClick={handleFavoriteClick}>
+            {isFavorite ? "Remove favorites" : "Add favorites"}
+          </button>
+
           <p>{restaurant?.description_short}</p>
           <p>{restaurant?.description_long}</p>
           <h3>Adress:</h3>

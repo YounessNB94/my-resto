@@ -10,6 +10,7 @@ export const Card = ({ restaurant }: CardProps) => {
   const { addFavorite, setShowModal, favoritesIds, setSelectedFavId } =
     useContext(FavoritesContext);
   const isFavorite = favoritesIds.includes(restaurant.id);
+  // You could even store this method in the favorite context
    const handleFavoriteClick = () => {
      if (isFavorite) {
        setSelectedFavId(restaurant.id);
